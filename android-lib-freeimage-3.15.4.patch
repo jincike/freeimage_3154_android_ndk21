@@ -1,0 +1,26 @@
+diff -rupN FreeImage/Source/LibJPEG/jconfig.h FreeImage-android/Source/LibJPEG/jconfig.h
+--- FreeImage/Source/LibJPEG/jconfig.h	2012-02-19 18:33:18.000000000 +0100
++++ FreeImage-android/Source/LibJPEG/jconfig.h	2013-01-17 15:42:19.000000000 +0100
+@@ -39,7 +39,7 @@ typedef unsigned char boolean;
+ #define TARGA_SUPPORTED		/* Targa image file format */
+ 
+ #define TWO_FILE_COMMANDLINE	/* optional */
+-#define USE_SETMODE		/* Microsoft has setmode() */
++#undef USE_SETMODE		/* Microsoft has setmode() */
+ #undef NEED_SIGNAL_CATCHER
+ #undef DONT_USE_B_MODE
+ #undef PROGRESS_REPORT		/* optional */
+diff -rupN FreeImage/Source/LibRawLite/internal/dcraw_common.cpp FreeImage-android/Source/LibRawLite/internal/dcraw_common.cpp
+--- FreeImage/Source/LibRawLite/internal/dcraw_common.cpp	2012-07-15 20:44:06.000000000 +0200
++++ FreeImage-android/Source/LibRawLite/internal/dcraw_common.cpp	2013-01-17 15:48:13.000000000 +0100
+@@ -31,6 +31,10 @@ it under the terms of the one of three l
+ #include "internal/var_defines.h"
+ #include "internal/libraw_bytebuffer.h"
+ 
++#ifdef __ANDROID__
++#include <swab.h>
++#endif
++
+ #ifndef __GLIBC__
+ char *my_memmem (char *haystack, size_t haystacklen,
+ 	      char *needle, size_t needlelen)
