@@ -2,6 +2,5 @@ freeimage_android
 =================
 
 Compile FreeImage Library for Android
-
-Check the patch file for necessary changes to get the library compiled. Changes are worked in into the current code.
-Enter the directory and run ndk-build to build the library.
+亲测已经编译安卓so库成功。reference:
+https://www.cnblogs.com/huangfuyuan/p/14988508.html
